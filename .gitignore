@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Backup files
+*-backup.html
+
+# Obsidian internal files (keep public-facing content only)
+.obsidian/
