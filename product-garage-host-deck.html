@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* === CORE RESET === */
@@ -195,6 +195,203 @@
       background: var(--bg-card-hover);
     }
 
+    /* === FOUR-COLUMN VALUE GRID (Slide 3) === */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1rem, 2vw, 1.5rem);
+      width: 100%;
+      max-width: 1100px;
+      margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: clamp(1rem, 2vw, 1.5rem);
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .value-icon {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+      display: block;
+    }
+
+    .value-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+      margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .value-text {
+      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    /* === PERSONA SELECTOR (Slide 2) === */
+    .persona-selector {
+      width: 100%;
+      max-width: 1050px;
+    }
+
+    /* Hide radio inputs */
+    .persona-toggle {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .persona-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+      width: 100%;
+    }
+
+    .persona-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      cursor: pointer;
+      transition: all 0.4s var(--ease-smooth);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .persona-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-blue);
+      box-shadow: var(--shadow-md);
+    }
+
+    .persona-header {
+      text-align: left;
+    }
+
+    .persona-icon {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+      display: block;
+    }
+
+    .persona-card h3 {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+      color: var(--text);
+    }
+
+    .persona-subtitle {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      color: var(--text-dim);
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+    }
+
+    .expand-hint {
+      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+      color: var(--accent-blue);
+      font-weight: 500;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .persona-card:hover .expand-hint {
+      color: var(--accent-green);
+    }
+
+    /* Expandable content (hidden by default) */
+    .persona-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.6s var(--ease-smooth), opacity 0.6s var(--ease-smooth), margin-top 0.6s var(--ease-smooth);
+    }
+
+    /* When expanded */
+    #startup:checked ~ .persona-cards label[for="startup"] .persona-details,
+    #manager:checked ~ .persona-cards label[for="manager"] .persona-details {
+      max-height: 600px;
+      opacity: 1;
+      margin-top: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    /* Hide expand hint when expanded */
+    #startup:checked ~ .persona-cards label[for="startup"] .expand-hint,
+    #manager:checked ~ .persona-cards label[for="manager"] .expand-hint {
+      display: none;
+    }
+
+    /* Expanded card styling */
+    #startup:checked ~ .persona-cards label[for="startup"],
+    #manager:checked ~ .persona-cards label[for="manager"] {
+      border-color: var(--accent-green);
+    }
+
+    .persona-section {
+      margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+
+    .persona-section h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+      color: var(--accent-green);
+    }
+
+    .persona-benefits {
+      list-style: none;
+      padding: 0;
+    }
+
+    .persona-benefits li {
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+      padding-left: clamp(1rem, 2vw, 1.25rem);
+      position: relative;
+    }
+
+    .persona-benefits li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    .persona-example {
+      background: rgba(88, 166, 255, 0.05);
+      border-left: 3px solid var(--accent-blue);
+      padding: clamp(0.75rem, 1.5vw, 1rem);
+      margin-top: clamp(0.75rem, 1.5vw, 1rem);
+      border-radius: var(--radius-md);
+    }
+
+    .persona-example p {
+      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .persona-example strong {
+      color: var(--accent-blue);
+    }
+
     /* === TWO-COLUMN LAYOUT === */
     .two-column {
       display: grid;
@@ -204,406 +401,334 @@
       max-width: 950px;
     }
 
-    /* === STAT GRID === */
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: clamp(0.85rem, 1.7vw, 1.25rem);
-      margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
-      max-width: 100%;
+    /* === SLIDE 4 - PROOF WITH IMAGE === */
+    .proof-container {
       width: 100%;
-    }
-
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: clamp(1.25rem, 2.5vw, 1.75rem);
+      max-width: 900px;
       text-align: center;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
     }
 
-    .stat-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-hover);
-      box-shadow: var(--shadow-md);
-    }
-
-    .stat-number {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(2.25rem, 4.5vw, 3.25rem);
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 0.35rem;
-    }
-
-    .stat-number.blue { color: var(--accent-blue); }
-    .stat-number.green { color: var(--accent-green); }
-    .stat-number.orange { color: var(--accent-orange); }
-    .stat-number.purple { color: var(--accent-purple); }
-
-    .stat-label {
-      font-size: clamp(0.85rem, 1.4vw, 1.05rem);
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    /* === FEATURE LIST === */
-    .feature-list {
-      list-style: none;
-      max-width: 700px;
-      margin: clamp(1.25rem, 2.5vw, 1.75rem) auto 0;
-    }
-
-    .feature-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: clamp(0.65rem, 1.3vw, 0.9rem);
-      margin-bottom: clamp(0.85rem, 1.7vw, 1.25rem);
-      font-size: clamp(0.9rem, 1.75vw, 1.1rem);
-      line-height: 1.5;
-      color: var(--text-muted);
-    }
-
-    .feature-list li::before {
-      content: "→";
-      color: var(--accent-blue);
-      font-weight: 700;
-      font-size: 1.2em;
-      flex-shrink: 0;
-    }
-
-    /* === QUOTE BLOCK === */
-    .quote-block {
-      background: var(--bg-card);
-      border-left: 4px solid var(--accent-green);
-      border-radius: var(--radius-md);
-      padding: clamp(1.25rem, 2.5vw, 1.75rem);
-      margin: clamp(1rem, 2vw, 1.5rem) auto;
-      max-width: 800px;
-      box-shadow: var(--shadow-sm);
+    .mvp-image {
+      width: 100%;
+      max-height: min(45vh, 420px);
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border);
-      border-left: 4px solid var(--accent-green);
+      box-shadow: var(--shadow-lg);
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
     }
 
-    .quote-text {
-      font-size: clamp(0.95rem, 1.85vw, 1.2rem);
-      line-height: 1.6;
-      color: var(--text);
-      font-style: italic;
-      margin-bottom: 0.75rem;
+    .proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+      flex-wrap: wrap;
     }
 
-    .quote-author {
-      font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    .proof-stat {
+      text-align: center;
+    }
+
+    .proof-stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--accent-blue);
+      line-height: 1;
+      margin-bottom: clamp(0.25rem, 0.5vw, 0.35rem);
+    }
+
+    .proof-stat-label {
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
       color: var(--text-muted);
       font-weight: 500;
     }
 
-    .quote-role {
-      color: var(--text-dim);
-      font-weight: 400;
+    .testimonial {
+      background: var(--bg-card);
+      border-left: 4px solid var(--accent-green);
+      padding: clamp(1.25rem, 2.5vw, 1.75rem);
+      border-radius: var(--radius-md);
+      text-align: left;
     }
 
-    /* === IMAGE CONTAINER === */
-    .image-container {
-      width: 100%;
-      max-width: 900px;
-      margin: clamp(1.5rem, 3vw, 2rem) auto;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border-ghost);
-      box-shadow: var(--shadow-md);
+    .testimonial-text {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.6;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
     }
 
-    .image-container img {
-      width: 100%;
-      height: auto;
-      display: block;
-      max-height: min(50vh, 500px);
-      object-fit: cover;
+    .testimonial-author {
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
+      color: var(--accent-green);
+      font-weight: 600;
     }
 
-    /* === VALUE GRID (Horizontal Layout for Laptops) === */
-    .value-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: clamp(0.7rem, 1.4vw, 1rem);
-      margin-top: clamp(0.8rem, 1.6vw, 1.15rem);
-      max-width: 100%;
-      width: 100%;
-    }
-
-    .value-card {
+    /* === SLIDE 5 - FORMAT OVERVIEW === */
+    .format-box {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: clamp(0.85rem, 1.7vw, 1.25rem);
-      box-shadow: var(--shadow-sm);
-      transition: all 0.35s var(--ease-smooth);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      max-width: 800px;
+      width: 100%;
+      text-align: left;
     }
 
-    .value-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
-      background: var(--bg-card-hover);
+    .format-box h3 {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+      color: var(--accent-blue);
     }
 
-    .value-icon {
-      font-size: clamp(1.6rem, 3vw, 2rem);
-      margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
-      line-height: 1;
+    .format-list {
+      list-style: none;
+      padding: 0;
     }
 
-    .value-title {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(0.9rem, 1.75vw, 1.1rem);
-      font-weight: 700;
+    .format-list li {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: clamp(0.6rem, 1.2vw, 0.9rem);
+      padding-left: clamp(1.25rem, 2.5vw, 1.5rem);
+      position: relative;
+    }
+
+    .format-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .format-evaluation {
+      margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+      padding-top: clamp(1rem, 2vw, 1.5rem);
+      border-top: 1px solid var(--border);
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
+      color: var(--text-dim);
+    }
+
+    /* === SLIDE 6 - LIGHT ASK === */
+    .ask-list {
+      list-style: none;
+      padding: 0;
+      max-width: 750px;
+      width: 100%;
+    }
+
+    .ask-list li {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.6;
       color: var(--text);
-      margin-bottom: clamp(0.35rem, 0.7vw, 0.5rem);
+      margin-bottom: clamp(0.85rem, 1.7vw, 1.25rem);
+      padding-left: clamp(1.5rem, 3vw, 2rem);
+      position: relative;
+    }
+
+    .ask-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .lead-time-note {
+      margin-top: clamp(1.5rem, 3vw, 2.25rem);
+      padding: clamp(1rem, 2vw, 1.5rem);
+      background: rgba(88, 166, 255, 0.05);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      max-width: 750px;
+      width: 100%;
+    }
+
+    .lead-time-note p {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* === SLIDE 7 - STEPS === */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1rem, 2vw, 1.5rem);
+      width: 100%;
+      max-width: 1000px;
+      margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: clamp(1rem, 2vw, 1.5rem);
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-blue);
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--accent-blue);
+      line-height: 1;
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+      opacity: 0.3;
+    }
+
+    .step-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+      color: var(--text);
       line-height: 1.2;
     }
 
-    .value-text {
-      font-size: clamp(0.72rem, 1.4vw, 0.86rem);
-      line-height: 1.45;
+    .step-text {
+      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+      line-height: 1.5;
       color: var(--text-muted);
     }
 
-    /* === CONTACT CARD === */
-    .contact-card {
+    /* === SLIDE 8 - CTA + VENUE === */
+    .cta-section {
+      max-width: 750px;
+      width: 100%;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(0.75rem, 1.5vw, 1rem);
+      margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .contact-link {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--accent-green);
+    }
+
+    .organizers {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .organizers a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .organizers a:hover {
+      color: var(--accent-green);
+    }
+
+    .venue-ps {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: clamp(1.75rem, 3.5vw, 2.5rem);
-      max-width: 700px;
-      margin: clamp(1.25rem, 2.5vw, 1.75rem) auto;
-      box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
+      padding: clamp(1.25rem, 2.5vw, 1.75rem);
+      margin-top: clamp(2rem, 4vw, 3rem);
+      text-align: left;
+      max-width: 750px;
+      width: 100%;
     }
 
-    .contact-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: var(--shadow-lg);
-      background: var(--bg-card-hover);
+    .venue-ps h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+      color: var(--accent-orange);
     }
 
-    .card-title {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.35rem, 2.7vw, 1.85rem);
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: clamp(0.85rem, 1.7vw, 1.25rem);
-    }
-
-    .card-text {
-      font-size: clamp(0.95rem, 1.85vw, 1.2rem);
+    .venue-ps p {
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
       line-height: 1.6;
       color: var(--text-muted);
-      margin-bottom: clamp(0.65rem, 1.3vw, 0.9rem);
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
     }
 
-    .card-text a {
-      color: var(--accent-blue);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .card-text a:hover {
-      color: var(--accent-purple);
-      text-decoration: underline;
-    }
-
-    .organizer-name {
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    /* === ANIMATIONS === */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes scaleReveal {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes countPop {
-      0% {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .slide.active .anim-1 { animation: fadeInUp 0.6s var(--ease-smooth) 0.1s both; }
-    .slide.active .anim-2 { animation: fadeInUp 0.6s var(--ease-smooth) 0.2s both; }
-    .slide.active .anim-3 { animation: fadeInUp 0.6s var(--ease-smooth) 0.3s both; }
-    .slide.active .anim-4 { animation: fadeInUp 0.6s var(--ease-smooth) 0.4s both; }
-    .slide.active .anim-5 { animation: fadeInUp 0.6s var(--ease-smooth) 0.5s both; }
-    .slide.active .anim-6 { animation: fadeInUp 0.6s var(--ease-smooth) 0.6s both; }
-
-    .slide.active .pop-1 { animation: countPop 0.5s var(--ease-bounce) 0.4s both; }
-    .slide.active .pop-2 { animation: countPop 0.5s var(--ease-bounce) 0.5s both; }
-    .slide.active .pop-3 { animation: countPop 0.5s var(--ease-bounce) 0.6s both; }
-
-    .slide.active .scale-reveal { animation: scaleReveal 0.6s var(--ease-smooth) 0.3s both; }
-
-    /* === NAVIGATION DOTS === */
-    .nav-dots {
-      position: fixed;
-      bottom: clamp(1.5rem, 3vw, 2rem);
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.5rem;
-      z-index: 100;
-      background: rgba(19, 23, 32, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 0.75rem 1.25rem;
-      border-radius: 2rem;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .nav-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-      cursor: pointer;
-      transition: all 0.3s var(--ease-smooth);
-    }
-
-    .nav-dot:hover {
-      background: rgba(255, 255, 255, 0.4);
-      transform: scale(1.3);
-    }
-
-    .nav-dot.active {
-      background: var(--accent-blue);
-      width: 24px;
-      border-radius: 3px;
-      box-shadow: 0 0 8px var(--accent-blue);
-      transform: scale(1.6);
-    }
-
-    /* === PROGRESS BAR === */
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-green));
-      transition: width 0.4s var(--ease-smooth);
-      z-index: 1000;
+    .venue-ps p:last-child {
+      margin-bottom: 0;
     }
 
     /* === SLIDE COUNTER === */
     .slide-counter {
       position: fixed;
-      top: clamp(1.5rem, 3vw, 2rem);
-      right: clamp(1.5rem, 3vw, 2rem);
+      bottom: clamp(1rem, 2vw, 1.5rem);
+      right: clamp(1rem, 2vw, 1.5rem);
       font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+      font-size: clamp(0.7rem, 1.3vw, 0.85rem);
       color: var(--text-dim);
-      z-index: 100;
-      font-weight: 500;
-      font-variant-numeric: tabular-nums;
+      background: rgba(19, 23, 32, 0.8);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      z-index: 1000;
+      backdrop-filter: blur(8px);
     }
 
-    /* === RESPONSIVE === */
-    @media (max-width: 1200px) {
+    /* === RESPONSIVE BREAKPOINTS === */
+    @media (max-width: 900px) {
       .value-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .steps-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 768px) {
-      .two-column {
+    @media (max-width: 700px) {
+      .slide { padding: 2rem 1.5rem; }
+      .persona-cards {
         grid-template-columns: 1fr;
       }
-
       .value-grid {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
       }
-
-      .stat-grid {
+      .steps-grid {
         grid-template-columns: 1fr;
       }
+      .proof-stats {
+        gap: 1.25rem;
+      }
     }
 
-    @media (max-height: 900px) {
-      h2 { font-size: clamp(1.45rem, 3.15vw, 2.2rem); margin-bottom: 0.7rem; }
-      .value-grid { gap: 0.65rem; margin-top: 0.7rem; }
-      .value-card { padding: clamp(0.75rem, 1.5vw, 1.1rem); }
-      .value-icon { font-size: clamp(1.45rem, 2.8vw, 1.85rem); margin-bottom: 0.35rem; }
-      .value-title { font-size: clamp(0.88rem, 1.7vw, 1.05rem); margin-bottom: 0.3rem; }
-      .value-text { font-size: clamp(0.7rem, 1.38vw, 0.84rem); line-height: 1.42; }
-    }
-
-    @media (max-height: 800px) {
-      .slide { padding: clamp(2.25rem, 3.75vw, 3rem) clamp(1.85rem, 3.75vw, 2.75rem); }
-      h2 { font-size: clamp(1.35rem, 2.9vw, 2.05rem); margin-bottom: 0.6rem; }
-      .value-grid { gap: 0.6rem; margin-top: 0.65rem; }
-      .stat-grid { gap: 0.7rem; margin-top: 0.85rem; }
-      .stat-card { padding: clamp(0.95rem, 1.9vw, 1.35rem); }
-      .stat-number { font-size: clamp(1.85rem, 3.7vw, 2.65rem); }
-      .stat-label { font-size: clamp(0.75rem, 1.25vw, 0.9rem); }
-      .value-card { padding: clamp(0.7rem, 1.4vw, 1rem); }
-      .value-icon { font-size: clamp(1.35rem, 2.6vw, 1.7rem); margin-bottom: 0.3rem; }
-      .value-title { font-size: clamp(0.84rem, 1.65vw, 1rem); margin-bottom: 0.28rem; }
-      .value-text { font-size: clamp(0.68rem, 1.33vw, 0.8rem); line-height: 1.4; }
-    }
-
-    @media (max-height: 700px) {
-      .slide { padding: 2rem 1.75rem; }
-      h2 { font-size: clamp(1.25rem, 2.7vw, 1.9rem); margin-bottom: 0.55rem; }
-      .value-grid { gap: 0.55rem; margin-top: 0.6rem; }
-      .stat-grid { gap: 0.65rem; margin-top: 0.75rem; }
-      .stat-card { padding: clamp(0.85rem, 1.7vw, 1.2rem); }
-      .stat-number { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
-      .stat-label { font-size: clamp(0.72rem, 1.2vw, 0.85rem); }
-      .value-card { padding: clamp(0.65rem, 1.3vw, 0.9rem); }
-      .value-icon { font-size: clamp(1.25rem, 2.4vw, 1.6rem); margin-bottom: 0.28rem; }
-      .value-title { font-size: clamp(0.8rem, 1.58vw, 0.95rem); margin-bottom: 0.25rem; }
-      .value-text { font-size: clamp(0.66rem, 1.28vw, 0.77rem); line-height: 1.38; }
-    }
-
-    @media (max-height: 600px) {
-      .slide { padding: 1.75rem 1.5rem; }
-      h2 { font-size: clamp(1.15rem, 2.5vw, 1.75rem); margin-bottom: 0.5rem; }
-      .value-grid { gap: 0.5rem; margin-top: 0.55rem; }
-      .value-card { padding: clamp(0.6rem, 1.2vw, 0.85rem); }
-      .value-icon { font-size: clamp(1.2rem, 2.3vw, 1.5rem); margin-bottom: 0.25rem; }
-      .value-title { font-size: clamp(0.76rem, 1.5vw, 0.9rem); margin-bottom: 0.22rem; line-height: 1.15; }
-      .value-text { font-size: clamp(0.64rem, 1.23vw, 0.74rem); line-height: 1.35; }
+    @media (max-width: 600px) {
+      .slide { padding: 1.75rem 1.25rem; }
+      h2 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+      .value-card { padding: 0.85rem; }
+      .step-card { padding: 0.85rem; }
     }
 
     /* === PARTICLES BACKGROUND === */
@@ -652,17 +777,6 @@
         display: none;
       }
     }
-
-    /* === INLINE EDITING (Optional) === */
-    [contenteditable="true"] {
-      outline: 2px dashed var(--accent-blue);
-      outline-offset: 4px;
-      cursor: text;
-    }
-
-    [contenteditable="true"]:focus {
-      outline-color: var(--accent-green);
-    }
   </style>
 </head>
 <body>
@@ -671,430 +785,343 @@
 
   <div class="deck" id="deck">
 
-    <!-- SLIDE 0: Title -->
+    <!-- SLIDE 0: Title + Hook -->
     <div class="slide active" data-slide="0">
       <div class="content-center">
-        <p class="tagline anim-1">Partner with Product Garage</p>
-        <h1 class="anim-2">Where Product Thinking<br/>Gets <span class="highlight-blue">Sharper</span></h1>
-        <p class="subtitle mt-32 anim-3">An invite-only workshop series for product-minded builders who care about <strong class="highlight-green">how they think</strong>, not just what they ship</p>
+        <p class="tagline">Partner with Product Garage</p>
+        <h1>De-risk your next product bet with <span class="highlight-blue">6-12 senior PM perspectives</span></h1>
+        <p class="subtitle mt-32">Strategic advisory worth <span class="highlight-green">€10K+</span> | Train your team | Build brand</p>
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"Title","script":"Product Garage is where product thinking gets sharper. It's an invite-only workshop series for builders who care about how they think, not just what they ship.","notes":["Invite-only community for product-minded builders","Focus on thinking quality, not just output","Partnership opportunity deck"]}
+      {"title":"Title + Hook","script":"Welcome to Product Garage. If you're making big product bets — deciding what to build, how to price it, how to take it to market — you want confidence before you commit resources. What if you could get 6 to 12 senior product managers to pressure-test your approach before you ship? That's what Product Garage offers host partners.","notes":["De-risk major product decisions before committing resources","Get strategic advisory worth over €10K from senior PM perspectives","Train your team and build your brand in the Dublin tech scene"]}
       </script>
     </div>
 
-    <!-- SLIDE 1: The Problem (AI Era Hook) -->
+    <!-- SLIDE 1: Who This Is For (Interactive Personas) -->
     <div class="slide" data-slide="1">
       <div class="content-center">
-        <h2 class="anim-1">AI Output Is <span class="highlight-orange">Cheap</span></h2>
-        <h2 class="anim-2 mt-24">Clear Thinking Is Still <span class="highlight-green">Expensive</span></h2>
-        <div class="ghost-card mt-48 anim-3">
-          <p style="font-size: clamp(1.1rem, 2.25vw, 1.4rem); line-height: 1.6; color: var(--text-primary);">
-            Modern AI tools make polished outputs trivial — decks, PRDs, mock apps in minutes.<br/><br/>
-            But <strong class="highlight-blue">generating output ≠ delivering outcomes.</strong><br/><br/>
-            The bottleneck isn't the tool. It's the <strong>quality of thinking</strong> behind it:<br/>
-            problem framing, judgment under constraints, and knowing what questions to ask.
-          </p>
+        <h2 class="mb-32">Who This Is For</h2>
+
+        <div class="persona-selector">
+          <input type="radio" name="persona" id="startup" class="persona-toggle">
+          <input type="radio" name="persona" id="manager" class="persona-toggle">
+
+          <div class="persona-cards">
+            <!-- Startup Founder Persona -->
+            <label for="startup" class="persona-card">
+              <div class="persona-header">
+                <span class="persona-icon">🚀</span>
+                <h3>Startup Founder</h3>
+                <p class="persona-subtitle">Early-stage, hard decisions</p>
+                <span class="expand-hint">Click to see your benefits →</span>
+              </div>
+              <div class="persona-details">
+                <div class="persona-section">
+                  <h4>You Get:</h4>
+                  <ul class="persona-benefits">
+                    <li><strong>De-risk €50K+ product bets</strong> — 6-12 senior PMs pressure-test before you build</li>
+                    <li><strong>See AI-era product thinking in action</strong> — How experienced PMs balance AI tools with judgment, prompting strategies, outcome-first thinking</li>
+                    <li><strong>Cross-pollination from diverse industries</strong> — Fresh perspectives from PMs at different companies/domains you can't find in your network</li>
+                    <li><strong>Free strategic advisory (€10K+ value)</strong> — 6-12 different approaches to your challenge</li>
+                    <li><strong>Hiring signal</strong> — Spot PM talent, identify potential advisors</li>
+                    <li><strong>Build brand</strong> — Position as thought leader in Dublin tech scene</li>
+                  </ul>
+                  <div class="persona-example">
+                    <p><strong>Example:</strong> "Should we build feature X or double down on platform?"<br>
+                    → Get 6-12 strategic frameworks + see how senior PMs think from different angles (user mindset, business impact, technical feasibility)</p>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <!-- Director/Manager Persona -->
+            <label for="manager" class="persona-card">
+              <div class="persona-header">
+                <span class="persona-icon">🏢</span>
+                <h3>Director/Sr Manager</h3>
+                <p class="persona-subtitle">Team needs product thinking</p>
+                <span class="expand-hint">Click to see your benefits →</span>
+              </div>
+              <div class="persona-details">
+                <div class="persona-section">
+                  <h4>You Get:</h4>
+                  <ul class="persona-benefits">
+                    <li><strong>Train product thinking across roles</strong> — Not just PMs: forward deploy engineers, solution engineers, sales engineers learn outcome-first thinking</li>
+                    <li><strong>See AI-era product work in practice</strong> — How senior PMs integrate AI into their craft: prompting, frameworks, when to trust AI vs hold the line on judgment</li>
+                    <li><strong>Cross-pollination from different industries</strong> — Perspectives from PMs at other companies/domains with different operating models</li>
+                    <li><strong>External validation</strong> — Honest feedback without company politics on your approach</li>
+                    <li><strong>Innovation leadership</strong> — Show exec team you're cultivating product culture, not just shipping features</li>
+                    <li><strong>Team development at scale</strong> — Multiple team members (PMs + adjacent roles) benefit from one session</li>
+                  </ul>
+                  <div class="persona-example">
+                    <p><strong>Example:</strong> "How to prioritize these 5 customer requests?"<br>
+                    → Your team watches 6-12 PMs think from different angles: user mindset, business impact, technical constraints, outcome-first reasoning</p>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
         </div>
+
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"The AI Era Problem","script":"AI output is cheap, but clear thinking is still expensive. Tools can generate polished decks and PRDs in minutes, but that's not the same as delivering outcomes. The real bottleneck isn't the tool — it's the quality of thinking: problem framing, judgment under constraints, knowing what questions to ask.","notes":["AI tools make output easy but don't guarantee outcomes","Critical thinking is the bottleneck, not tools","Need: problem framing, judgment, asking right questions"]}
+      {"title":"Who This Is For","script":"We work with two types of partners. Startup founders who are making high-stakes product decisions with limited resources — you need to get it right the first time. And directors or senior managers who want to develop product thinking across their teams, not just in PMs but also in forward deploy engineers, solution engineers, and sales engineers. Click on either card to see the specific value for your situation.","notes":["Startup founders: de-risk major bets, get strategic advisory, cross-pollination","Directors/Managers: train product thinking across roles, AI-era practices, external validation","Interactive expandable cards show persona-specific benefits"]}
       </script>
     </div>
 
-    <!-- SLIDE 2: What Actually Matters -->
+    <!-- SLIDE 2: Core Value Proposition (4-Column Grid) -->
     <div class="slide" data-slide="2">
-      <div class="content-left">
-        <h2 class="anim-1 mb-32">What <span class="highlight-blue">Actually Matters</span> in Product Roles</h2>
-        <ul class="feature-list">
-          <li class="anim-2">How you <strong>frame ambiguous problems</strong> and ask the right questions</li>
-          <li class="anim-3"><strong>Taste and judgment</strong> on value, viability, and sequencing</li>
-          <li class="anim-4">Integrating AI into your craft <strong>without outsourcing core decisions</strong></li>
-          <li class="anim-5">Operating inside <strong>messy, real-world constraints</strong> — not toy cases</li>
-        </ul>
-        <p class="subtitle mt-48 anim-6">Product Garage forces the <strong class="highlight-green">right kind of practice</strong> — honing these skills with real challenges, not templates.</p>
+      <div class="content-center">
+        <h2 class="mb-24">The Core Value Proposition</h2>
+
+        <div class="value-grid">
+          <div class="value-card">
+            <span class="value-icon">🎯</span>
+            <h4 class="value-title">De-Risk Decisions</h4>
+            <p class="value-text">6-12 senior PMs pressure-test your approach before you commit resources.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon highlight-purple">🤖</span>
+            <h4 class="value-title">AI-Era Product Thinking</h4>
+            <p class="value-text">See how AI-powered PMs work: prompting strategies, frameworks, AI + judgment balance in practice.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon highlight-green">🌐</span>
+            <h4 class="value-title">Cross-Pollination</h4>
+            <p class="value-text">Fresh perspectives from diverse industries + operating models you can't find internally.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon highlight-orange">👥</span>
+            <h4 class="value-title">Beyond PMs</h4>
+            <p class="value-text">Train emerging roles: Forward deploy, solution, sales engineers in product thinking.</p>
+          </div>
+        </div>
+
+        <p class="subtitle mt-48" style="color: var(--text-dim); font-size: clamp(0.9rem, 1.8vw, 1.1rem);">
+          Cross-pollination of product thinking in the AI era — strategic sparring, not free consulting
+        </p>
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"What Actually Matters","script":"What actually matters in product roles? Four things: how you frame ambiguous problems, your taste and judgment on value and viability, integrating AI without outsourcing decisions, and operating inside messy real-world constraints. Product Garage forces the right kind of practice.","notes":["Problem framing and asking right questions","Judgment on value, viability, sequencing","AI integration without losing human decision-making","Practice with real constraints, not toy cases"]}
+      {"title":"Core Value Proposition","script":"Here's what makes Product Garage different. First, de-risking — you get 6 to 12 senior PMs to pressure-test your approach before you commit resources. Second, you see AI-era product thinking in action — how experienced PMs balance AI tools with judgment. Third, cross-pollination — fresh perspectives from different industries and operating models. And fourth, it's not just for PMs — forward deploy engineers, solution engineers, sales engineers all learn product thinking. This is strategic sparring, not free consulting.","notes":["De-risk decisions with senior PM pressure-testing","See AI-era product work: prompting, frameworks, AI + judgment","Cross-pollination from diverse industries and operating models","Train adjacent roles in product thinking (forward deploy, solution, sales engineers)"]}
       </script>
     </div>
 
-    <!-- SLIDE 3: Product Garage's Answer (Format + Who) -->
+    <!-- SLIDE 3: Proof - MVP Validation -->
     <div class="slide" data-slide="3">
       <div class="content-center">
-        <h2 class="anim-1 mb-32">Product Garage's Answer</h2>
-        <div class="two-column anim-2">
-          <div class="ghost-card">
-            <div class="value-icon">🎯</div>
-            <h3 class="value-title">Real Challenges</h3>
-            <p class="value-text">Real product problems from partner companies — platform, B2B SaaS, vertical workflows. Messy constraints, fragmented data, unclear priorities.</p>
+        <h2 class="mb-32">Proof: MVP Validation (April 2026)</h2>
+
+        <div class="proof-container">
+          <img src="assets/mvp-event-4.jpg" alt="MVP Event April 2026" class="mvp-image">
+
+          <div class="proof-stats">
+            <div class="proof-stat">
+              <div class="proof-stat-number">8</div>
+              <div class="proof-stat-label">Participants</div>
+            </div>
+            <div class="proof-stat">
+              <div class="proof-stat-number">4</div>
+              <div class="proof-stat-label">Teams</div>
+            </div>
+            <div class="proof-stat">
+              <div class="proof-stat-number">3</div>
+              <div class="proof-stat-label">Hours</div>
+            </div>
+            <div class="proof-stat">
+              <div class="proof-stat-number">100%</div>
+              <div class="proof-stat-label">Real Challenge</div>
+            </div>
           </div>
-          <div class="ghost-card">
-            <div class="value-icon">🧠</div>
-            <h3 class="value-title">Deep Practice</h3>
-            <p class="value-text">3-hour workshops. Individual work (not teams). 10-min SME conversations. Focus on thinking quality over template output.</p>
-          </div>
-        </div>
-        <div class="two-column mt-32 anim-3">
-          <div class="ghost-card">
-            <div class="value-icon">👥</div>
-            <h3 class="value-title">Curated Community</h3>
-            <p class="value-text">Invite-only: mid/senior PMs, forward deploy engineers, solution engineers, sales engineers — anyone who wants to hone product thinking.</p>
-          </div>
-          <div class="ghost-card">
-            <div class="value-icon">📊</div>
-            <h3 class="value-title">Expert Feedback</h3>
-            <p class="value-text">Feedback from product leaders and experienced PMs with an explicit "hiring lens" — what matters at senior levels.</p>
+
+          <div class="testimonial">
+            <p class="testimonial-text">"Product thinking development, training for engineers and PMs, innovation mindset cultivation — more valuable than getting solutions."</p>
+            <p class="testimonial-author">— Challenge Host, MVP Event</p>
           </div>
         </div>
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"Product Garage's Answer","script":"Product Garage provides four things: real challenges from partner companies across domains, deep 3-hour practice focused on thinking quality, a curated invite-only community of product-minded builders, and expert feedback from product leaders.","notes":["Real challenges from companies (platform, B2B SaaS, vertical workflows)","3-hour workshops: individual work, SME access, thinking over templates","Invite-only: PMs, engineers, solution/sales engineers","Expert feedback with hiring lens from product leaders"]}
+      {"title":"MVP Validation","script":"We've already validated this format. In April 2026, we ran our MVP event with 8 participants working on a real multi-channel conversation challenge. Here's what the host said: 'Product thinking development, training for engineers and PMs, innovation mindset cultivation — more valuable than getting solutions.' That's the insight. Hosts don't come to us for free consulting. They come to develop their team's thinking.","notes":["MVP event April 2026: 8 participants, 4 teams, 3 hours, real challenge","Host testimonial: team development and innovation mindset more valuable than solutions","Validated format: not free consulting, focus on thinking development"]}
       </script>
     </div>
 
-    <!-- SLIDE 4: MVP Proof (Image + Stats) -->
+    <!-- SLIDE 4: How It Works (Compact) -->
     <div class="slide" data-slide="4">
       <div class="content-center">
-        <h2 class="anim-1 mb-24">Validated <span class="highlight-green">April 2026</span></h2>
-        <div class="image-container scale-reveal" style="max-height: min(45vh, 420px);">
-          <img src="assets/mvp-event-4.jpg" alt="Product Garage MVP Event - April 2026" style="max-height: min(45vh, 420px); object-fit: cover;">
-        </div>
-        <div class="stat-grid anim-3">
-          <div class="stat-card pop-1">
-            <div class="stat-number blue">8</div>
-            <div class="stat-label">Participants</div>
-          </div>
-          <div class="stat-card pop-2">
-            <div class="stat-number green">4</div>
-            <div class="stat-label">Teams</div>
-          </div>
-          <div class="stat-card pop-3">
-            <div class="stat-number orange">3</div>
-            <div class="stat-label">Hours</div>
-          </div>
-          <div class="stat-card pop-1">
-            <div class="stat-number purple">100<span style="font-size: 0.5em;">%</span></div>
-            <div class="stat-label">Real Business Challenge</div>
+        <h2 class="mb-32">How It Works</h2>
+
+        <div class="format-box">
+          <h3>The Format:</h3>
+          <ul class="format-list">
+            <li>3 hours (evening or Saturday)</li>
+            <li>6-12 curated senior PMs + product-minded builders</li>
+            <li>Individual work → 10-min SME Q&A → demos + discussion</li>
+            <li>Focus: One deep area (solution, pricing, GTM) with defended reasoning</li>
+          </ul>
+          <div class="format-evaluation">
+            We evaluate: Problem framing | Prioritization | Business impact | Use of AI
           </div>
         </div>
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"MVP Validation","script":"We ran our MVP in April 2026. Eight participants, four teams, three hours of deep-dive work on a real product challenge.","notes":["MVP event completed April 2026","8 participants, 4 teams, 3 hours","Validated format and value proposition"]}
+      {"title":"How It Works","script":"The format is straightforward. Three hours, either evening or Saturday morning. Six to twelve senior PMs and product-minded builders. Individual work, not team hackathons. Ten-minute floating SME conversations for context. Then lightweight demos and discussion. We focus on one deep area — solution design, pricing strategy, or go-to-market — with defended reasoning. We evaluate problem framing, prioritization, business impact, and use of AI.","notes":["3 hours (evening or Saturday), 6-12 curated participants","Individual work with SME access, not team hackathons","Focus on one deep area with defended reasoning","Evaluation: problem framing, prioritization, business impact, AI use"]}
       </script>
     </div>
 
-    <!-- SLIDE 5: Testimonials -->
+    <!-- SLIDE 5: What You Provide (Light Ask) -->
     <div class="slide" data-slide="5">
       <div class="content-center">
-        <h2 class="anim-1 mb-32">What <span class="highlight-blue">They Said</span></h2>
-        <div class="quote-block anim-2">
-          <p class="quote-text">"Best way to upskill in the age of AI is to learn by doing, especially if you do it with a community of like-minded people. Product Garage is the perfect opportunity to do exactly that!"</p>
-          <p class="quote-author">— Vladimir Loginov, <span class="quote-role">PM at Smartbox</span></p>
-        </div>
-        <div class="quote-block anim-3">
-          <p class="quote-text">"Product thinking development opportunity, training for engineers and product managers, innovation mindset cultivation — this is more valuable than getting solutions."</p>
-          <p class="quote-author">— Challenge Host, <span class="quote-role">MVP Event</span></p>
+        <h2 class="mb-32">What You Provide</h2>
+        <p class="subtitle mb-32">The Ask Is Light:</p>
+
+        <ul class="ask-list">
+          <li>Share a real product challenge (can be anonymized, no proprietary data)</li>
+          <li>SME available for 3 hours (floating 10-min Q&A conversations)</li>
+          <li>Customer insights to ground the problem (anonymized feedback/data)</li>
+        </ul>
+
+        <div class="lead-time-note">
+          <p><strong>Lead time:</strong> 1-3 months to collaborate on case materials<br>
+          <strong>Open to all domains:</strong> Platform, B2B SaaS, vertical workflows</p>
         </div>
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"MVP Testimonials","script":"Here's feedback from our MVP: From a participant — 'Best way to upskill in the AI age is learning by doing with community.' From the challenge host — 'Product thinking development, training for engineers and PMs, innovation mindset cultivation — more valuable than getting solutions.'","notes":["Participant: AI-era upskilling through practice with community","Host: Team development and innovation culture > getting solutions","Validated value for both participants and hosts"]}
+      {"title":"What You Provide","script":"The ask is light. You share a real product challenge — it can be anonymized, no proprietary data required. You commit an SME for 3 hours of floating conversations. And you provide customer insights to ground the problem — anonymized feedback or data. Lead time is 1 to 3 months to collaborate on case materials. We're open to all domains: platform challenges, B2B SaaS, vertical workflows.","notes":["Real product challenge (anonymized, no proprietary data)","SME available for 3 hours (floating Q&A)","Customer insights to ground problem","Lead time: 1-3 months, open to all domains"]}
       </script>
     </div>
 
-    <!-- SLIDE 6: Who Should Host? -->
+    <!-- SLIDE 6: How to Get Involved (4 Steps) -->
     <div class="slide" data-slide="6">
       <div class="content-center">
-        <h2 class="anim-1 mb-32">Who Should <span class="highlight-blue">Host?</span></h2>
-        <div class="two-column">
-          <div class="ghost-card anim-2">
-            <div class="value-icon">🚀</div>
-            <h3 class="value-title mb-24"><span class="highlight-green">Startup Founder</span></h3>
-            <p class="value-text">Early-stage (Seed, Series A) with a hard product decision coming up. About to commit resources and want to pressure-test your thinking.</p>
-          </div>
-          <div class="ghost-card anim-3">
-            <div class="value-icon">🏢</div>
-            <h3 class="value-title mb-24"><span class="highlight-purple">Manager in Company</span></h3>
-            <p class="value-text">Leading a product team that needs to sharpen product thinking. Looking for practical team development beyond generic training.</p>
-          </div>
-        </div>
-        <p class="subtitle mt-48 anim-4" style="text-align: center;">Open to all domains: Platform, B2B SaaS, vertical workflows — any company with <strong class="highlight-orange">real product challenges</strong></p>
-      </div>
-      <script type="application/json" class="slide-notes">
-      {"title":"Who Should Host","script":"Two types of hosts work best: Startup founders in early stages with hard product decisions coming up, and managers in companies who want to develop their team's product thinking. Open to all domains — platform, B2B SaaS, vertical workflows.","notes":["Startup founders (Seed, Series A) with hard decisions","Managers leading teams needing practical development","Open to all domains with real product challenges"]}
-      </script>
-    </div>
+        <h2 class="mb-32">How to Get Involved</h2>
+        <p class="subtitle mb-32">4 Steps to Partner:</p>
 
-    <!-- SLIDE 7: Why Host (Startup Founders) -->
-    <div class="slide" data-slide="7">
-      <div class="content-left">
-        <h2 class="anim-1 mb-24">Why Host? <span class="highlight-green">(Startup Founders)</span></h2>
-        <p class="subtitle mb-32 anim-2">You have a hard product decision. You're about to commit resources.</p>
-        <div class="ghost-card anim-3">
-          <h3 class="value-title mb-24">You Get:</h3>
-          <ul class="feature-list">
-            <li><strong>De-risk your product bet</strong> — 6-12 senior PMs pressure-test your approach before you commit engineering resources</li>
-            <li><strong>Free strategic advisory session</strong> — Worth €10K+ in consultant fees. See 6-12 different strategic approaches to your challenge</li>
-            <li><strong>Hiring signal</strong> — Watch how experienced PMs approach your domain. Identify potential hires or advisors</li>
-            <li><strong>Build brand in Dublin PM community</strong> — Helps with future hiring and fundraising. Position as thought leader</li>
-            <li><strong>Train your team</strong> — Your PMs/engineers see senior-level product thinking in action</li>
-          </ul>
-        </div>
-        <p class="subtitle mt-32 anim-4"><strong class="highlight-blue">Example:</strong> "Should we build this feature or double down on platform?" → Get 6-12 strategic viewpoints + frameworks you can use</p>
-      </div>
-      <script type="application/json" class="slide-notes">
-      {"title":"Why Host - Startup Founders","script":"For startup founders: You get to de-risk your product bet with 6 to 12 senior PMs pressure-testing your approach. It's a free strategic advisory session worth over 10K euros. You'll see how experienced PMs approach your domain — a hiring signal. You build brand in the Dublin PM community which helps with hiring and fundraising. And your team learns by watching senior-level thinking in action.","notes":["De-risk product decisions with external validation","Free strategic advisory (€10K+ value)","Hiring signal and advisor pipeline","Brand building for hiring/fundraising","Team development through observation"]}
-      </script>
-    </div>
-
-    <!-- SLIDE 8: Why Host (Managers) -->
-    <div class="slide" data-slide="8">
-      <div class="content-left">
-        <h2 class="anim-1 mb-24">Why Host? <span class="highlight-purple">(Managers)</span></h2>
-        <p class="subtitle mb-32 anim-2">Your team needs to sharpen product thinking. Training is expensive and often generic.</p>
-        <div class="ghost-card anim-3">
-          <h3 class="value-title mb-24">You Get:</h3>
-          <ul class="feature-list">
-            <li><strong>Upskill your reports</strong> — Cheaper than courses (€5-10K per person), more practical. Your team watches 6-12 senior PMs work through real problems</li>
-            <li><strong>External validation</strong> — No company politics. Get honest perspective on your approach from experienced builders</li>
-            <li><strong>Demonstrate innovation leadership</strong> — Show exec team you're cultivating product thinking culture, not just shipping features</li>
-            <li><strong>Fresh strategic input</strong> — Insights you can't get internally. See approaches from PMs at other companies</li>
-            <li><strong>Free team development</strong> — Zero budget required vs external consultants or training programs</li>
-          </ul>
-        </div>
-        <p class="subtitle mt-32 anim-4"><strong class="highlight-blue">Example:</strong> "How should we prioritize these 5 customer requests?" → Your team learns 6-12 different prioritization frameworks by watching</p>
-      </div>
-      <script type="application/json" class="slide-notes">
-      {"title":"Why Host - Managers","script":"For managers: You upskill your team cheaper and more practically than courses. They watch 6 to 12 senior PMs work through real problems. You get external validation without company politics. You demonstrate innovation leadership to your exec team. You get fresh strategic input you can't find internally. And it's free — zero budget required.","notes":["Upskill team (cheaper than €5-10K courses)","External validation without politics","Show innovation leadership to execs","Fresh insights from external PMs","Free team development, no budget needed"]}
-      </script>
-    </div>
-
-    <!-- SLIDE 9: What You Provide (Idea Host) -->
-    <div class="slide" data-slide="9">
-      <div class="content-center">
-        <h2 class="anim-1 mb-32">What You <span class="highlight-orange">Provide</span> as Idea Host</h2>
-        <div class="ghost-card anim-2" style="max-width: 750px;">
-          <p class="subtitle mb-24">The ask is light:</p>
-          <ul class="feature-list">
-            <li><strong>Share a real product challenge</strong> — No proprietary data required. Can be anonymized</li>
-            <li><strong>SME available for Q&A</strong> — 3-4 hours during event. Answer participant questions in 10-min conversations</li>
-            <li><strong>Customer insights to ground the challenge</strong> — Anonymized customer feedback, usage patterns, or pain points</li>
-          </ul>
-        </div>
-        <div class="two-column mt-32">
-          <div class="ghost-card anim-3">
-            <p class="value-text"><strong class="highlight-green">You retain all insights.</strong><br/>This isn't free consulting.</p>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h4 class="step-title">Share Challenge</h4>
+            <p class="step-text">Brief overview of your product challenge, no full spec needed</p>
           </div>
-          <div class="ghost-card anim-4">
-            <p class="value-text"><strong class="highlight-purple">Lead time: 1-3 months</strong><br/>Collaborate on case materials</p>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h4 class="step-title">Intro Call</h4>
+            <p class="step-text">30 min to discuss fit and desired outcomes</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h4 class="step-title">Collaborate</h4>
+            <p class="step-text">Work together on case materials (2-3 weeks)</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h4 class="step-title">Event Day</h4>
+            <p class="step-text">SME commits 3 hours for the workshop</p>
           </div>
         </div>
-        <p class="subtitle mt-32 anim-5">This is <strong class="highlight-blue">team development + strategic sparring</strong>, not a hackathon for solutions.</p>
-      </div>
-      <script type="application/json" class="slide-notes">
-      {"title":"What You Provide","script":"The ask is light: Share a real product challenge — no proprietary data needed, can be anonymized. Have an SME available for Q&A during the event, about 3 to 4 hours total. Provide customer insights to ground the challenge. You retain all insights — this isn't free consulting. Lead time is 1 to 3 months to collaborate on materials. This is team development and strategic sparring, not a hackathon.","notes":["Real challenge (can be anonymized)","SME for 3-4 hours (10-min Q&A conversations)","Customer insights to ground problem","You retain insights, not free consulting","1-3 month lead time for collaboration"]}
-      </script>
-    </div>
 
-    <!-- SLIDE 8: Event Format -->
-    <div class="slide" data-slide="8">
-      <div class="content-left">
-        <h2 class="anim-1 mb-32">How It Works</h2>
-        <div class="ghost-card anim-2">
-          <h3 class="value-title mb-24">Format (Validated from MVP)</h3>
-          <ul class="feature-list">
-            <li><strong>Duration:</strong> 3 hours (evening 6-9pm or Saturday 10am-1pm)</li>
-            <li><strong>Size:</strong> 6-12 curated mid/senior PMs and product-minded builders</li>
-            <li><strong>Structure:</strong> Individual work → 10-min floating SME conversations → lightweight demos + Q&A</li>
-            <li><strong>Focus:</strong> Deep-dive on ONE area (solution, pricing, or GTM) with defended reasoning — 50/50 split between process/thinking narrative and output quality</li>
-          </ul>
-        </div>
-        <div class="ghost-card mt-32 anim-3">
-          <h3 class="value-title mb-24">What We Evaluate</h3>
-          <ul class="feature-list">
-            <li>Problem definition: Can you frame messy reality into a focused problem?</li>
-            <li>Prioritization & trade-offs: Must-have vs nice-to-have, and why?</li>
-            <li>Business impact: Connect decisions to value and viability</li>
-            <li>Use of AI: Where does AI accelerate? Where do you hold the line on judgment?</li>
-          </ul>
-        </div>
-      </div>
-      <script type="application/json" class="slide-notes">
-      {"title":"How It Works","script":"Here's the format we validated: 3 hours, evening or Saturday morning. 6 to 12 curated participants. Individual work with 10-minute SME conversations, then demos and Q&A. Focus on one deep area — solution, pricing, or GTM — with defended reasoning. We evaluate four things: problem framing, prioritization and trade-offs, business impact, and use of AI.","notes":["3 hours, 6-12 participants, individual work","10-min SME conversations, demos + Q&A","Deep-dive on one area with defended reasoning","Evaluate: problem framing, prioritization, business impact, AI use"]}
-      </script>
-    </div>
-
-    <!-- SLIDE 9: What Participants Get -->
-    <div class="slide" data-slide="9">
-      <div class="content-center">
-        <h2 class="anim-1 mb-24">What <span class="highlight-blue">Participants</span> Get</h2>
-        <div class="value-grid">
-          <div class="value-card anim-2">
-            <div class="value-icon">🎯</div>
-            <h3 class="value-title"><span class="highlight-purple">Craft Development</span></h3>
-            <p class="value-text">Real practice with authentic challenges — 6/7 came for craft, NOT interview prep.</p>
-          </div>
-          <div class="value-card anim-3">
-            <div class="value-icon">👥</div>
-            <h3 class="value-title"><span class="highlight-blue">Peer Learning</span></h3>
-            <p class="value-text">See how senior builders approach problems — 5/7 validated motivation.</p>
-          </div>
-          <div class="value-card anim-4">
-            <div class="value-icon">💼</div>
-            <h3 class="value-title"><span class="highlight-orange">Portfolio Work</span></h3>
-            <p class="value-text">Case study with real constraints — not toy prompts or generic exercises.</p>
-          </div>
-          <div class="value-card anim-5">
-            <div class="value-icon">📊</div>
-            <h3 class="value-title"><span class="highlight-green">Expert Feedback</span></h3>
-            <p class="value-text">Product leaders with hiring lens — what actually matters at senior levels.</p>
-          </div>
-        </div>
-      </div>
-      <script type="application/json" class="slide-notes">
-      {"title":"What Participants Get","script":"What do participants get? Four things: First, they hone product craft through real practice — our MVP validated that 6 out of 7 came for craft development, not interview prep. Second, they learn from peers — 5 out of 7 came to see how other senior builders approach problems. Third, portfolio-worthy work grounded in real constraints. Fourth, expert feedback from product leaders. All participants are invite-only and curated.","notes":["Hone craft through real practice (6/7 motivation)","Peer learning (5/7 motivation)","Portfolio-worthy work with real constraints","Expert feedback from product leaders","Invite-only, curated participants"]}
-      </script>
-    </div>
-
-    <!-- SLIDE 10: How to Get Involved -->
-    <div class="slide" data-slide="10">
-      <div class="content-center">
-        <h2 class="anim-1 mb-32">How to Get Involved</h2>
-        <div class="ghost-card anim-2" style="max-width: 650px;">
-          <h3 class="value-title mb-24">Steps for Idea Hosts</h3>
-          <ul class="feature-list">
-            <li><strong>Share your product challenge</strong> — Brief overview, no full spec needed</li>
-            <li><strong>Schedule intro call</strong> — Discuss case fit and expected outcomes (30 min)</li>
-            <li><strong>Collaborate on case materials</strong> — We'll help develop the brief together (2-3 weeks)</li>
-            <li><strong>SME commits to event day</strong> — 3 hours for floating Q&A conversations</li>
-          </ul>
-          <p class="subtitle mt-32" style="font-size: clamp(1rem, 2vw, 1.2rem);"><strong class="highlight-green">Lead time:</strong> 1-3 months from first contact to event</p>
-        </div>
-      </div>
-      <script type="application/json" class="slide-notes">
-      {"title":"How to Get Involved","script":"Four steps to get involved as an Idea Host: Share your product challenge with a brief overview. Schedule a 30-minute intro call to discuss fit. Collaborate with us on case materials over 2 to 3 weeks. Your SME commits to 3 hours on event day for Q&A. Total lead time is 1 to 3 months from first contact to event.","notes":["Share challenge (brief overview)","Intro call (30 min) to discuss fit","Collaborate on materials (2-3 weeks)","SME commitment (3 hours on event day)","1-3 month lead time"]}
-      </script>
-    </div>
-
-    <!-- SLIDE 11: Let's Talk (Contact) -->
-    <div class="slide" data-slide="11">
-      <div class="content-center">
-        <h2 class="anim-1 mb-32">Let's Talk</h2>
-        <div class="contact-card anim-2" style="text-align: center;">
-          <p class="card-text mb-32"><strong><a href="https://www.linkedin.com/company/113095428/" target="_blank" style="color: var(--accent-blue); text-decoration: none;">LinkedIn</a></strong></p>
-          <p class="card-text mb-16"><strong>Organizers:</strong></p>
-          <p class="card-text" style="line-height: 1.8;">
-            <span class="organizer-name"><a href="https://www.linkedin.com/in/ngan-kph/" target="_blank" style="color: var(--text-primary); text-decoration: none;">Ngan Pham</a></span> <span style="color: var(--text-tertiary);">(Co-Founder)</span><br/>
-            <span class="organizer-name"><a href="https://www.linkedin.com/in/vikasnagprasanna/" target="_blank" style="color: var(--text-primary); text-decoration: none;">Vikas Nagprasanna</a></span> <span style="color: var(--text-tertiary);">(Co-Founder)</span><br/>
-            <span class="organizer-name"><a href="https://www.linkedin.com/in/vishnupriyan17/" target="_blank" style="color: var(--text-primary); text-decoration: none;">Vishnupriyan</a></span> <span style="color: var(--text-tertiary);">(Co-Founder)</span>
-          </p>
-        </div>
-        <p class="subtitle mt-48 anim-3" style="text-align: center;">
-          <strong class="highlight-green">Interested in partnering? Connect with us.</strong>
+        <p class="subtitle mt-48" style="color: var(--text-dim); font-size: clamp(0.85rem, 1.6vw, 1rem);">
+          Lead time: 1-3 months from first contact to event
         </p>
-        <div class="ghost-card mt-48 anim-4" style="max-width: 650px; border-color: var(--border); background: rgba(19, 23, 32, 0.4);">
-          <p class="subtitle" style="font-size: clamp(0.95rem, 1.85vw, 1.15rem); line-height: 1.6;">
-            <strong class="highlight-blue">P.S.</strong> Have a great event space in Dublin?<br/>
-            We'd love to host at your venue (10-12 people, Wi-Fi + AV).<br/>
-            <span style="color: var(--text-dim); font-size: 0.9em;">Bonus: brand visibility + community goodwill</span>
-          </p>
+      </div>
+      <script type="application/json" class="slide-notes">
+      {"title":"How to Get Involved","script":"Four steps to partner. First, share your product challenge — just a brief overview, no full spec. Second, we have a 30-minute intro call to discuss fit and outcomes. Third, we collaborate on case materials over 2 to 3 weeks. Fourth, your SME commits 3 hours for event day. Total lead time is 1 to 3 months from first contact to event.","notes":["Step 1: Share product challenge (brief overview)","Step 2: Intro call (30 min) to discuss fit","Step 3: Collaborate on case materials (2-3 weeks)","Step 4: SME commits 3 hours for event day"]}
+      </script>
+    </div>
+
+    <!-- SLIDE 7: Let's Talk + Venue Soft Ask -->
+    <div class="slide" data-slide="7">
+      <div class="content-center">
+        <h2 class="mb-24">Interested in Partnering? Let's Talk.</h2>
+
+        <div class="cta-section">
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/company/113095428/" class="contact-link" target="_blank">LinkedIn: Product Garage</a>
+          </div>
+
+          <div class="organizers">
+            <strong>Organizers:</strong><br>
+            <a href="https://www.linkedin.com/in/ngan-kph/" target="_blank">Ngan Pham</a>,
+            <a href="https://www.linkedin.com/in/vikasnagprasanna/" target="_blank">Vikas Nagprasanna</a>,
+            <a href="https://www.linkedin.com/in/vishnupriyan17/" target="_blank">Vishnupriyan</a>
+          </div>
+
+          <div class="venue-ps">
+            <h4>P.S. Have a great event space in Dublin?</h4>
+            <p>We'd love to host at your venue (10-12 people, Wi-Fi + AV).</p>
+            <p><strong>Bonus:</strong> brand visibility + community goodwill</p>
+          </div>
         </div>
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"Let's Talk","script":"Ready to partner? Visit our LinkedIn page, or reach out directly to any of the three co-founders: Ngan Pham, Vikas Nagprasanna, or Vishnupriyan. P.S. If you have a great event space in Dublin, we'd love to host at your venue — you get brand visibility and community goodwill.","notes":["LinkedIn: Product Garage company page","Co-founders: Ngan, Vikas, Vishnupriyan (all with LinkedIn links)","Open to partnership discussions","Venue ask as bonus (not equal billing)"]}
+      {"title":"Let's Talk","script":"Ready to explore a partnership? Connect with us on LinkedIn or reach out to any of the three organizers — Ngan, Vikas, or Vishnupriyan. And a quick P.S.: if you have a great event space in Dublin that can host 10 to 12 people with Wi-Fi and AV, we'd love to talk. You get brand visibility and community goodwill.","notes":["LinkedIn: Product Garage company page","Organizers: Ngan Pham, Vikas Nagprasanna, Vishnupriyan","P.S.: Venue partners welcome (10-12 people, Wi-Fi + AV)"]}
       </script>
     </div>
 
   </div>
 
-  <!-- Progress Bar -->
-  <div class="progress-bar" id="progressBar"></div>
-
-  <!-- Slide Counter -->
-  <div class="slide-counter" id="slideCounter">1 / 11</div>
-
-  <!-- Navigation Dots -->
-  <div class="nav-dots" id="navDots"></div>
+  <!-- Slide counter -->
+  <div class="slide-counter">
+    <span id="current-slide">1</span> / <span id="total-slides">8</span>
+  </div>
 
   <script>
-    /* === NAVIGATION SYSTEM === */
+    /* === GLOBAL NAVIGATION === */
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
-    const progressBar = document.getElementById('progressBar');
-    const slideCounter = document.getElementById('slideCounter');
-    const navDots = document.getElementById('navDots');
+    const currentSlideSpan = document.getElementById('current-slide');
+    const totalSlidesSpan = document.getElementById('total-slides');
 
-    // Create navigation dots
-    slides.forEach((_, index) => {
-      const dot = document.createElement('div');
-      dot.classList.add('nav-dot');
-      if (index === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goTo(index));
-      navDots.appendChild(dot);
-    });
+    // Set total slides
+    totalSlidesSpan.textContent = totalSlides;
 
-    const dots = document.querySelectorAll('.nav-dot');
-
-    function goTo(n) {
-      if (n < 0 || n >= totalSlides) return;
+    function goTo(index) {
+      if (index < 0 || index >= totalSlides) return;
 
       slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-
-      currentSlide = n;
-
+      currentSlide = index;
       slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
+      currentSlideSpan.textContent = currentSlide + 1;
 
-      updateProgress();
-      logSpeakerNotes();
-    }
-
-    function next() {
-      goTo(currentSlide + 1);
-    }
-
-    function prev() {
-      goTo(currentSlide - 1);
-    }
-
-    function updateProgress() {
-      const progress = ((currentSlide + 1) / totalSlides) * 100;
-      progressBar.style.width = progress + '%';
-      slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
-    }
-
-    function logSpeakerNotes() {
-      const currentSlideEl = slides[currentSlide];
-      const notesScript = currentSlideEl.querySelector('.slide-notes');
-
+      // Log speaker notes to console
+      const slideElement = slides[currentSlide];
+      const notesScript = slideElement.querySelector('.slide-notes');
       if (notesScript) {
         try {
           const notes = JSON.parse(notesScript.textContent);
           console.clear();
-          console.log(
-            `%c📍 Slide ${currentSlide + 1}/${totalSlides}: ${notes.title}`,
-            'font-size: 16px; font-weight: bold; color: #0066FF;'
-          );
-          console.log(
-            `%c🎤 Script:\n${notes.script}`,
-            'font-size: 14px; color: #1A1A1A; line-height: 1.6;'
-          );
-          console.log(
-            `%c📝 Key Points:`,
-            'font-size: 13px; font-weight: bold; color: #00CC88; margin-top: 8px;'
-          );
+          console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #58a6ff');
+          console.log('%c🎤 Speaker Notes', 'font-size: 18px; font-weight: bold; color: #3fb950');
+          console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #58a6ff');
+          console.log('%cSlide ' + (currentSlide + 1) + ' of ' + totalSlides + ': ' + notes.title, 'font-size: 14px; font-weight: bold; color: #58a6ff');
+          console.log('%c\n📝 Script:', 'font-weight: bold; color: #f0883e');
+          console.log('%c' + notes.script, 'color: #e6edf3; line-height: 1.6');
+          console.log('%c\n🎯 Key Points:', 'font-weight: bold; color: #a371f7');
           notes.notes.forEach((note, i) => {
-            console.log(`%c  ${i + 1}. ${note}`, 'font-size: 12px; color: #4A4A4A; line-height: 1.5;');
+            console.log('%c  ' + (i + 1) + '. ' + note, 'color: #8b949e');
           });
-          console.log(
-            `%c\n💡 Open DevTools in a separate window for a presenter view`,
-            'font-size: 11px; color: #7A7A7A; font-style: italic;'
-          );
+          console.log('%c\n💡 Tip: Open DevTools in a separate window for a presenter view', 'color: #d29922; font-style: italic');
+          console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n', 'color: #58a6ff');
         } catch (e) {
-          console.error('Failed to parse speaker notes:', e);
+          console.error('Error parsing speaker notes:', e);
         }
+      }
+    }
+
+    function next() {
+      if (currentSlide < totalSlides - 1) {
+        goTo(currentSlide + 1);
+      }
+    }
+
+    function prev() {
+      if (currentSlide > 0) {
+        goTo(currentSlide - 1);
       }
     }
 
@@ -1120,7 +1147,7 @@
       }
     });
 
-    // Touch navigation
+    // Touch/swipe support
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -1134,18 +1161,23 @@
     });
 
     function handleSwipe() {
-      if (touchEndX < touchStartX - 50) next();
-      if (touchEndX > touchStartX + 50) prev();
+      if (touchEndX < touchStartX - 50) {
+        next();
+      }
+      if (touchEndX > touchStartX + 50) {
+        prev();
+      }
     }
 
-    // Click navigation (left/right halves)
+    // Click navigation (left half = prev, right half = next)
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.nav-dots') || e.target.closest('.nav-dot')) return;
+      // Ignore clicks on interactive elements
+      if (e.target.closest('a, label, input')) return;
 
       const clickX = e.clientX;
-      const windowWidth = window.innerWidth;
+      const screenWidth = window.innerWidth;
 
-      if (clickX < windowWidth / 2) {
+      if (clickX < screenWidth / 2) {
         prev();
       } else {
         next();
@@ -1153,7 +1185,7 @@
     });
 
     // Create particles
-    function createParticles() {
+    (function createParticles() {
       const particlesContainer = document.getElementById('particles');
       const particleCount = 30;
 
@@ -1165,45 +1197,10 @@
         particle.style.animationDelay = Math.random() * 5 + 's';
         particlesContainer.appendChild(particle);
       }
-    }
+    })();
 
-    // Initialize
-    createParticles();
-    updateProgress();
-    logSpeakerNotes();
-
-    // Optional: Inline editing (hover and press 'e' to edit text)
-    let editMode = false;
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'e' || e.key === 'E') {
-        editMode = !editMode;
-        const editableElements = document.querySelectorAll('h1, h2, h3, p, li');
-        editableElements.forEach(el => {
-          el.contentEditable = editMode;
-          if (editMode) {
-            el.style.cursor = 'text';
-          } else {
-            el.style.cursor = '';
-            // Save to localStorage
-            localStorage.setItem('slide-content', document.body.innerHTML);
-          }
-        });
-        console.log(editMode ? '✏️ Edit mode ON (press E to toggle off)' : '💾 Edit mode OFF (changes saved to localStorage)');
-      }
-    });
-
-    // Load saved content from localStorage on page load
-    window.addEventListener('load', () => {
-      const savedContent = localStorage.getItem('slide-content');
-      if (savedContent) {
-        const shouldRestore = confirm('Found previously edited content. Restore it?');
-        if (shouldRestore) {
-          document.body.innerHTML = savedContent;
-          // Re-initialize after restoring
-          location.reload();
-        }
-      }
-    });
+    // Log initial speaker notes
+    goTo(0);
   </script>
 </body>
 </html>
