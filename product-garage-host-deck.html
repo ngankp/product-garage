@@ -664,26 +664,17 @@
 
     /* === LOGO STYLING === */
     .pg-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 700;
-      color: var(--text);
       margin-bottom: clamp(1.5rem, 3vw, 2rem);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(0.5rem, 1vw, 0.75rem);
     }
 
-    .pg-logo-icon {
-      width: clamp(2.5rem, 5vw, 3.5rem);
-      height: clamp(2.5rem, 5vw, 3.5rem);
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: clamp(1.5rem, 3vw, 2rem);
+    .pg-logo img {
+      width: clamp(180px, 25vw, 280px);
+      height: auto;
+      max-height: clamp(180px, 25vw, 280px);
+      object-fit: contain;
     }
 
     .venue-ps {
@@ -900,7 +891,7 @@
       </script>
     </div>
 
-    <!-- SLIDE 2: Why Partner (4-Column Grid) -->
+    <!-- SLIDE 2: Why Partner with Product Garage -->
     <div class="slide" data-slide="2">
       <div class="content-center">
         <h2 class="mb-24">Why Partner with Product Garage</h2>
@@ -908,39 +899,39 @@
         <div class="value-grid">
           <div class="value-card">
             <span class="value-icon">🎯</span>
-            <h4 class="value-title">Pressure-Test Real Problems</h4>
-            <p class="value-text"><strong>Founders:</strong> Get feedback on positioning, pricing, feature direction<br/>
-            <strong>Directors:</strong> Validate approach without politics</p>
+            <h4 class="value-title">Real Problems, Real Feedback</h4>
+            <p class="value-text"><strong>Founders:</strong> Positioning, pricing, feature decisions<br/>
+            <strong>Directors:</strong> Team approach validation, no politics</p>
           </div>
 
           <div class="value-card">
             <span class="value-icon highlight-green">🧠</span>
-            <h4 class="value-title">Elevate Product Thinking</h4>
-            <p class="value-text"><strong>Founders:</strong> Understand what works before you ship<br/>
-            <strong>Directors:</strong> Develop thinking across PMs + adjacent roles</p>
+            <h4 class="value-title">Product Thinking, Not Just Output</h4>
+            <p class="value-text"><strong>Founders:</strong> What works vs what doesn't<br/>
+            <strong>Directors:</strong> Elevate PMs + engineers beyond templates</p>
           </div>
 
           <div class="value-card">
             <span class="value-icon highlight-purple">🤖</span>
-            <h4 class="value-title">Learn AI-Era PM Practices</h4>
-            <p class="value-text"><strong>Founders:</strong> See how PMs think through ambiguity<br/>
-            <strong>Directors:</strong> AI integration, judgment, outcome-first reasoning</p>
+            <h4 class="value-title">AI Era in Practice</h4>
+            <p class="value-text"><strong>Founders:</strong> How PMs navigate ambiguity with AI<br/>
+            <strong>Directors:</strong> When to trust AI vs hold judgment</p>
           </div>
 
           <div class="value-card">
             <span class="value-icon highlight-orange">🌐</span>
-            <h4 class="value-title">Cross-Pollination</h4>
-            <p class="value-text"><strong>Founders:</strong> 6-12 PMs from different industries<br/>
-            <strong>Directors:</strong> Perspectives from different operating models</p>
+            <h4 class="value-title">Perspectives You Can't Hire</h4>
+            <p class="value-text"><strong>Founders:</strong> 6-12 senior PMs, different playbooks<br/>
+            <strong>Directors:</strong> Operating models outside your org</p>
           </div>
         </div>
 
         <p class="subtitle mt-48" style="color: var(--text-dim); font-size: clamp(0.9rem, 1.8vw, 1.1rem);">
-          Actionable feedback on concrete challenges, not generic advice
+          Expert-guided problem solving on YOUR challenge — not abstract advice
         </p>
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"Why Partner","script":"Here's what makes Product Garage different, for both founders and directors. First, pressure-test real problems — founders get feedback on positioning, pricing, and feature direction; directors validate their approach without internal politics. Second, elevate product thinking — founders understand what works before shipping; directors develop thinking across their teams. Third, learn AI-era practices — founders see how PMs think through ambiguity; directors see AI integration and judgment in action. Fourth, cross-pollination from different industries and operating models. This is actionable feedback on concrete challenges, not generic advice.","notes":["Founders: feedback on positioning/pricing/features | Directors: validation without politics","Founders: understand what works | Directors: develop team thinking","Learn AI-era PM practices in action","Cross-pollination from diverse industries and models"]}
+      {"title":"Why Partner","script":"Here's what makes Product Garage different. First, real problems get real feedback — founders get help on positioning, pricing, and feature decisions; directors validate their approach without office politics. Second, we focus on product thinking, not just output — founders learn what works versus what doesn't; directors elevate their teams beyond templates. Third, you see AI-era practices in action — founders watch how PMs navigate ambiguity with AI; directors see when to trust AI versus hold judgment. Fourth, you get perspectives you can't hire — founders access 6 to 12 senior PMs with different playbooks; directors see operating models from outside their org. This is expert-guided problem solving on your specific challenge, not abstract advice.","notes":["Real problems: positioning/pricing/features for founders, validation without politics for directors","Product thinking: what works vs templates and output","AI-era practices: navigating ambiguity, judgment calls","Perspectives you can't hire: different playbooks and operating models"]}
       </script>
     </div>
 
@@ -1070,8 +1061,7 @@
     <div class="slide" data-slide="7">
       <div class="content-center">
         <div class="pg-logo">
-          <div class="pg-logo-icon">🔧</div>
-          <span>Product Garage</span>
+          <img src="assets/product-garage-logo.jpeg" alt="Product Garage Logo">
         </div>
 
         <h2 class="mb-24">Interested in Partnering? Let's Talk.</h2>
