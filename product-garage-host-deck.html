@@ -631,6 +631,61 @@
       display: block;
     }
 
+    /* === OPENING SLIDE ENHANCEMENTS === */
+    .highlight-box {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(0.5rem, 1vw, 0.75rem);
+      padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.75rem, 1.5vw, 1.1rem);
+      background: rgba(88, 166, 255, 0.08);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(88, 166, 255, 0.2);
+      margin: 0 clamp(0.3rem, 0.6vw, 0.5rem);
+      transition: all 0.3s ease;
+    }
+
+    .highlight-box:hover {
+      background: rgba(88, 166, 255, 0.12);
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    .highlight-grid {
+      display: flex;
+      justify-content: center;
+      gap: clamp(0.75rem, 1.5vw, 1.25rem);
+      flex-wrap: wrap;
+      margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .highlight-grid .highlight-box {
+      margin: 0;
+    }
+
+    /* === LOGO STYLING === */
+    .pg-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(0.5rem, 1vw, 0.75rem);
+    }
+
+    .pg-logo-icon {
+      width: clamp(2.5rem, 5vw, 3.5rem);
+      height: clamp(2.5rem, 5vw, 3.5rem);
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
     .venue-ps {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -770,17 +825,31 @@
       <div class="content-center">
         <p class="tagline">Partner with Product Garage</p>
         <h1>Code is getting cheaper.<br/><span class="highlight-blue">Real product thinking</span> is the bottleneck.</h1>
-        <p class="subtitle mt-32">Get diverse senior PM perspectives on <span class="highlight-green">YOUR business challenge</span> | Elevate product thinking in your team | Learn how senior PMs operate in the AI era</p>
+
+        <div class="highlight-grid">
+          <div class="highlight-box">
+            <span style="font-size: 1.5em;">🎯</span>
+            <span>Senior PM perspectives</span>
+          </div>
+          <div class="highlight-box">
+            <span style="font-size: 1.5em;">🧠</span>
+            <span>Elevate product thinking</span>
+          </div>
+          <div class="highlight-box">
+            <span style="font-size: 1.5em;">🤖</span>
+            <span>AI-era practices</span>
+          </div>
+        </div>
       </div>
       <script type="application/json" class="slide-notes">
       {"title":"The Hook","script":"Code is getting cheaper. AI can generate solutions faster than ever. But real product thinking — deciding what to build, why it matters, how to prioritize — that's still the bottleneck. Product Garage turns your business challenge into a team development opportunity. Get diverse senior PM perspectives on your actual problem, elevate product thinking across your organization, and see how experienced PMs operate in the AI era.","notes":["Code/solutions are commodity, real product thinking is the constraint","Get senior PM perspectives on your specific challenge","Elevate product thinking, learn AI-era PM practices"]}
       </script>
     </div>
 
-    <!-- SLIDE 1: What's in it for you (Interactive Personas) -->
+    <!-- SLIDE 1: Who Should Partner (Interactive Personas) -->
     <div class="slide" data-slide="1">
       <div class="content-center">
-        <h2 class="mb-32">What's in it for you</h2>
+        <h2 class="mb-32">Who should partner with us?</h2>
 
         <div class="persona-selector">
           <input type="radio" name="persona" id="startup" class="persona-toggle">
@@ -792,16 +861,15 @@
               <div class="persona-header">
                 <span class="persona-icon">🚀</span>
                 <h3>Startup Founder</h3>
-                <p class="persona-key-benefit">Get 6-12 senior PM perspectives on YOUR business challenge — real product thinking before you commit resources.</p>
-                <span class="expand-hint">See how →</span>
+                <p class="persona-key-benefit">Early-stage with hard product decisions — need diverse senior PM perspectives before committing resources.</p>
+                <span class="expand-hint">Click to see what you get →</span>
               </div>
               <div class="persona-details">
                 <ul class="persona-benefits">
-                  <li><strong>Diverse senior PM perspectives</strong> you can't find in your network — different industries, different operating models, different angles</li>
-                  <li><strong>See how senior PMs operate in AI era</strong> — How experienced PMs balance AI tools with judgment and real product thinking</li>
-                  <li><strong>Pressure-test decisions</strong> — Get honest feedback on what to build, how to price, how to prioritize before shipping</li>
-                  <li><strong>Spot PM talent</strong> — Identify potential advisors or hires from the participant pool</li>
-                  <li><strong>Build brand</strong> — Position as thought leader in Dublin tech scene</li>
+                  <li>6-12 senior PM perspectives on YOUR challenge</li>
+                  <li>Pressure-test what to build, price, prioritize</li>
+                  <li>See AI-era product thinking in practice</li>
+                  <li>Access PM talent pool for hires/advisors</li>
                 </ul>
               </div>
             </label>
@@ -811,16 +879,15 @@
               <div class="persona-header">
                 <span class="persona-icon">🏢</span>
                 <h3>Director/Sr Manager</h3>
-                <p class="persona-key-benefit">Elevate real product thinking across your team — PMs and adjacent roles like forward deploy, solution, and sales engineers.</p>
-                <span class="expand-hint">See how →</span>
+                <p class="persona-key-benefit">Team needs real product thinking — not just PMs, but engineers and adjacent roles too.</p>
+                <span class="expand-hint">Click to see what you get →</span>
               </div>
               <div class="persona-details">
                 <ul class="persona-benefits">
-                  <li><strong>Elevate product thinking</strong> — Not just for PMs: forward deploy engineers, solution engineers, and sales engineers learn outcome-first reasoning</li>
-                  <li><strong>See how senior PMs operate in AI era</strong> — Integration of AI tools with judgment, prompting strategies, when to trust AI vs hold the line</li>
-                  <li><strong>Cross-pollination</strong> — Diverse perspectives from PMs at other companies with different operating models you can't find internally</li>
-                  <li><strong>External validation</strong> — Honest feedback on your approach without company politics</li>
-                  <li><strong>Innovation leadership</strong> — Show exec team you're cultivating real product culture, not just shipping features</li>
+                  <li>Elevate product thinking across team (PMs + forward deploy, solution, sales engineers)</li>
+                  <li>See how senior PMs operate in AI era</li>
+                  <li>External validation without politics</li>
+                  <li>Prove innovation leadership to exec team</li>
                 </ul>
               </div>
             </label>
@@ -829,7 +896,7 @@
 
       </div>
       <script type="application/json" class="slide-notes">
-      {"title":"What's in it for you","script":"We work with two types of partners. Startup founders who need diverse senior PM perspectives on their actual business challenges — real product thinking before committing resources. And directors or senior managers who want to elevate real product thinking across their teams, not just in PMs but also in forward deploy engineers, solution engineers, and sales engineers. Click on either card to see how this works for your situation.","notes":["Startup founders: diverse PM perspectives on YOUR challenge, real product thinking","Directors/Managers: elevate product thinking across roles including adjacent engineers","Interactive cards show persona-specific outcomes"]}
+      {"title":"Who Should Partner","script":"We work with two types of partners. Startup founders who are making hard product decisions early-stage and need diverse senior PM perspectives before committing resources. And directors or senior managers whose teams need real product thinking — not just PMs but also forward deploy engineers, solution engineers, and sales engineers. Click on either card to see what you get.","notes":["Startup founders: early-stage, hard decisions, need PM perspectives","Directors/Managers: teams need real product thinking beyond PMs","Interactive cards show what each persona gets"]}
       </script>
     </div>
 
@@ -998,7 +1065,11 @@
     <!-- SLIDE 7: Let's Talk + Venue Soft Ask -->
     <div class="slide" data-slide="7">
       <div class="content-center">
-        <span class="contact-icon">💬</span>
+        <div class="pg-logo">
+          <div class="pg-logo-icon">🔧</div>
+          <span>Product Garage</span>
+        </div>
+
         <h2 class="mb-24">Interested in Partnering? Let's Talk.</h2>
 
         <div class="cta-section">
